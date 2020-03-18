@@ -14,6 +14,7 @@ const TodoForm = () => {
     e.preventDefault();
     dispatch({ type: "ADD_TODO", payload: newTodo });
     console.log(newTodo);
+    setNewTodo('')
   };
 
   const handleClear = e => {
@@ -47,7 +48,7 @@ const TodoForm = () => {
         id={state.id}
         newTodo={newTodo}
       />
-      
+
     </div>
   );
 };

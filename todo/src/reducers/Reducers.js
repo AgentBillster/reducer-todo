@@ -11,10 +11,12 @@ export const reducerTodo = (state, action) => {
       return [...state, newTodos];
 
     case "TOGGLE_COMPLETED":
-      return {
-        ...state,
-        completed: !state.completed
-      };
+      return state.map(name => 
+        name.id === action.id ? {...name, completed: !name.completed } : name
+        )
+      
+      
+     
       
     case "CLEAR":
       return state.filter(task => !task.completed);

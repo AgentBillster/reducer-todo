@@ -1,10 +1,12 @@
 import React from "react";
 
 const Todos = props => {
-    
-  const handleToggle = id => {
+    console.log('*****************',props)
+  
+    const handleToggle = id => {
     props.dispatch({ type: "TOGGLE_COMPLETED", id: id });
   };
+
 
   return (
     <div>
@@ -13,7 +15,7 @@ const Todos = props => {
           <div
             onClick={() => handleToggle(todo.id)}
             key={todo.id}
-            className={`todo${todo.completed ? "completed" : ""}`}
+            className={`item${todo.completed ? "completed" : ""}`}
           >
             <p>{todo.item}</p>
           </div>
