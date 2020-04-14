@@ -1,23 +1,23 @@
 import React, { useState, useReducer } from "react";
 import { initialState, reducerTodo } from "../reducers/Reducers";
-import Todos from "./Todos";
+import { Todos } from "./Todos";
 
 const TodoForm = () => {
   const [state, dispatch] = useReducer(reducerTodo, initialState);
   const [newTodo, setNewTodo] = useState("");
 
-  const handleChanges = e => {
+  const handleChanges = (e) => {
     setNewTodo(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: "ADD_TODO", payload: newTodo });
     console.log(newTodo);
-    setNewTodo('')
+    setNewTodo("");
   };
 
-  const handleClear = e => {
+  const handleClear = (e) => {
     e.preventDefault();
     dispatch({ type: "CLEAR" });
   };
@@ -26,12 +26,9 @@ const TodoForm = () => {
     <div>
       <form>
         <input
-          type="text"
-          placeholder="Add Todo"
-          name="newTodo"
-          value={newTodo}
+          type="text" placeholder="Add Todo" name="newTodo" value={newTodo}
           onChange={handleChanges}
-        ></input>
+       />
 
         <button type="submit" onClick={handleSubmit}>
           Add
@@ -42,13 +39,11 @@ const TodoForm = () => {
         </button>
       </form>
 
-      <Todos
-        state={state}
-        dispatch={dispatch}
-        id={state.id}
-        newTodo={newTodo}
-      />
-
+      <div>
+        {state.map((item) => (
+          <Todos state={item} id={item.id} dispatch={dispatch} />
+        ))}
+      </div>
     </div>
   );
 };

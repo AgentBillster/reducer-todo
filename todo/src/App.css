@@ -94,3 +94,7 @@ input::placeholder {
 .clear-btn {
   margin-top: 16px;
 }
+
+.completed {
+  text-decoration: line-through;
+}

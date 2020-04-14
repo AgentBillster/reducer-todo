@@ -1,4 +1,20 @@
-export const initialState = [{ item: "", completed: false, id: Date.now() }];
+export const initialState = [
+  { 
+    item: "", 
+    completed: false, 
+    id: Date.now() 
+  },
+  { 
+    item: "", 
+    completed: false, 
+    id: Date.now() 
+  },
+  { 
+    item: "", 
+    completed: false, 
+    id: Date.now() 
+  }
+];
 
 export const reducerTodo = (state, action) => {
   switch (action.type) {
@@ -6,20 +22,17 @@ export const reducerTodo = (state, action) => {
       const newTodos = {
         item: action.payload,
         completed: false,
-        id: Date.now()
+        id: Date.now(),
       };
       return [...state, newTodos];
 
     case "TOGGLE_COMPLETED":
-      return state.map(name => 
-        name.id === action.id ? {...name, completed: !name.completed } : name
-        )
-      
-      
-     
-      
+      return state.map((name) =>
+        name.id === action.payload ? { ...name, completed: !name.completed } : name
+      );
+
     case "CLEAR":
-      return state.filter(task => !task.completed);
+      return state.filter((task) => !task.completed);
     default:
       return state;
   }
