@@ -12,4 +12,4 @@ export const Todos = (props) => {
       <h1>{props.state.item}</h1>
     </div>
   );
-};
+}; ''
